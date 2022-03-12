@@ -1,0 +1,10 @@
+{% form_theme form 'bootstrap_5_layout.html.twig' %}
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<div class="container col-md-6 mt-3 text-center">
+    <h1>Add new student</h1>
+    {{form (form)}}
+    <a class="btn btn-success"href="{{ path('student_index') }}">Back to list</a>
+</div>
+{% endblock %}

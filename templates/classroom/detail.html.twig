@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Classroom{% endblock %}
+
+{% block body %}
+    <h1 class="text text-center">Classroom</h1>
+<div class="container col-md-6 text-center mt-3">
+    <table class="table table-success table-striped">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Class ID</th>
+                <th>Name</th>
+                <th>Status</th>  
+                <th>Actions</th>           
+            </tr>
+        <tbody>
+            <tr>
+                <td>{{ classroom.id }}</td>   
+                <td>{{ classroom.classId }}</td>
+                <td>{{ classroom.className }}</td>
+                <td>{{ classroom.classStatus }}</td>
+                <td>
+                <a href="{{ path('classroom_edit', {'id': classroom.id}) }}" class="edit" title="Edit" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a>
+                <a href="{{ path('classroom_delete', {'id': classroom.id}) }}" class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE872;</i></a>
+                <br>
+                <a href="{{ path('classroom_index') }}" class="btn btn-success">Back to list</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    </div>
+  
+{% endblock %}

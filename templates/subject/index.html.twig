@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Subject index{% endblock %}
+
+{% block body %}
+<div class="container col-md-6 text-center mt-3">
+    <h1 class="text text-center">Subject list</h1>
+     <a href="{{ path('subject_add') }}"type="button" class="btn btn-success" >Add new Subject</a>
+    
+    <table class="table table-success table-striped">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Subject Id
+                <a class="text-decoration-none" href="{{ path('sort_asc')}}">
+                    <img src="{{asset('images/system/up.jpg') }}" width="20" height="20">
+                </a>
+                <a class="text-decoration-none" href="{{ path('sort_desc')}}">
+                    <img src="{{asset('images/system/down.jpg') }}" width="20" height="20">
+                </th>
+                <th>Subject Name</th>
+                <th>Subject Teacher</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for subject in subjects %}
+            <tr>
+                <td>{{ subject.id }}</td>
+                <td>{{ subject.subjectId }}</td>
+                <td>{{ subject.subjectName }}</td>
+                <td>{{ subject.subjectTeacher }}</td>
+                <td>
+                    <a href="{{ path('subject_detail', {'id': subject.id}) }}" class="view" title="View" data-toggle="tooltip"><i class="material-icons">&#xE417;</i></a>
+                    <a href="{{ path('subject_edit', {'id': subject.id}) }}" class="edit" title="Edit" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a>
+                    <a href="{{ path('subject_delete', {'id': subject.id}) }}" class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE872;</i></a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">No subject found, please add more!</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+{% endblock %}

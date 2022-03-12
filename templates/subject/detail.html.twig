@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Subject{% endblock %}
+
+{% block body %}
+    <h1 class="text text-center">Subject</h1>
+<div class="container col-md-6 text-center mt-3">
+    <table class="table table-success table-striped">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Subject ID</th>
+                <th>Subject Name</th>
+                <th>Subject Teacher</th>
+                <th>Actions</th>
+            </tr>
+        <tbody>
+            <tr>
+                <td>{{ subject.id }}</td>
+                <td>{{ subject.subjectId }}</td>
+                <td>{{ subject.subjectName }}</td>
+                <td>{{ subject.subjectTeacher }}</td>
+                <td>
+        <a href="{{ path('subject_edit', {'id': subject.id}) }}" class="edit" title="Edit" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a>
+        <a href="{{ path('subject_delete', {'id': subject.id}) }}" class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE872;</i></a>
+                    <br>
+        <a href="{{ path('subject_index') }}"class="btn btn-success">Back to list</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+{% endblock %}

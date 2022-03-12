@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Classroom index{% endblock %}
+
+{% block body %}
+<div class="container col-md-3 text-center mt-4">
+    <h1 class="text text-center">Classroom list</h1>
+        <a href="{{ path('classroom_add') }}"type="button" class="btn btn-success" >Add new Classroom</a>
+    <table class="table table-success table-striped">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Class Id
+                <a class="text-decoration-none" href="{{ path('sort_asc_classroom')}}">
+                    <img src="{{asset('images/system/up.jpg') }}" width="20" height="20">
+                </a>
+                <a class="text-decoration-none" href="{{ path('sort_desc_classroom')}}">
+                    <img src="{{asset('images/system/down.jpg') }}" width="20" height="20">
+                </th>
+                <th>Class Name</th>
+                <th>Class Status</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for classroom in classrooms %}
+            <tr>
+                <td>{{ classroom.id }}</td>
+                <td>{{ classroom.classId }}</td>
+                <td>{{ classroom.className }}</td>
+                <td>{{ classroom.classStatus }}</td>
+                <td>
+                   
+                    <a href="{{ path('classroom_detail', {'id': classroom.id}) }}" class="view" title="View" data-toggle="tooltip"><i class="material-icons">&#xE417;</i></a>
+                    <a href="{{ path('classroom_edit', {'id': classroom.id}) }}" class="edit" title="Edit" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a>
+                    <a href="{{ path('classroom_delete', {'id': classroom.id}) }}" class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE872;</i></a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">No classroom found, please add more!</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    </div>
+{% endblock %}
